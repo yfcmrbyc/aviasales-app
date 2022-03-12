@@ -1,0 +1,70 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+body {
+  margin: 0;
+  background: $bg-color;
+  font-family: $font-family;
+  font-style: $font-style;
+  font-weight: 600;
+}
+
+ul {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0px 103px 50px 103px;
+  box-sizing: border-box;
+
+  @media (max-width: 960px) {
+    padding: 0px 50px 30px 50px;
+  }
+
+  @media (max-width: 600px) {
+    max-width: 320px;
+    padding: 0 0 30px 0;
+  }
+}
+
+.logo {
+  min-width: 70px;
+  min-height: 75px;
+  margin: 50px auto;
+  background: url(./Logo.svg) no-repeat center;
+
+  @media (max-width: 960px) {
+    margin: 20px auto;
+  }
+}
+
+.container {
+  margin-left: 252px;
+
+  @media (max-width: 960px) {
+    max-width: 502px;
+    margin: 0 auto;
+    padding-top: 272px;
+  }
+}
+
+.button {
+  width: 100%;
+  height: 50px;
+  background: $button-color;
+  border-radius: 5px;
+  border: none;
+  color: $bg-element-color;
+  cursor: pointer;
+  box-sizing: border-box;
+  @include button-text;
+
+  @media (max-width: 600px) {
+    max-width: 318px;
+  }
+}

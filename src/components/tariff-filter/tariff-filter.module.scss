@@ -1,0 +1,53 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.tariff-filter {
+  display: flex;
+  margin-bottom: $indent-size;
+  max-width: 502px;
+}
+
+.btn {
+  @include button-text;
+  @include sort-button;
+}
+
+.active-btn {
+  @include button-text;
+  @include sort-button;
+  background: $button-color;
+  color: $bg-element-color;
+  border: none;
+}
+
+.cheapest {
+  @include button-text;
+  @include sort-button;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.active-cheapest {
+  @include button-text;
+  @include sort-button;
+  background: $button-color;
+  color: $bg-element-color;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.optimal {
+  @include button-text;
+  @include sort-button;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+}
+
+.active-optimal {
+  @include button-text;
+  @include sort-button;
+  background: $button-color;
+  color: $bg-element-color;
+  border: none;
+  border-radius: 0 5px 5px 0;
+}
