@@ -79,6 +79,12 @@
   background: url(./Checkbox.svg) no-repeat center;
 }
 
-.input:checked + .checkbox {
+.input:checked + .checkbox,
+.checkbox-checked {
+  position: absolute;
+  left: -30px;
+  top: -1px;
+  width: $indent-size;
+  height: $indent-size;
   background: url(./Checkbox-checked.svg) no-repeat center;
 }
