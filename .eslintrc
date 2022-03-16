@@ -38,6 +38,7 @@
         "exceptions": ["i", "j"],
         "min": 2
       }],
+      "no-use-before-define": ["off"],
       "default-param-last": ["off"],
       "no-else-return": ["off"],
       "no-lonely-if": ["error"],

@@ -1,7 +1,7 @@
 @import '../../scss/variables';
 @import '../../scss/mixins';
 
-.tiket {
+.ticket {
   max-width: 502px;
   max-height: 184px;
   background-color: $bg-element-color;
@@ -40,40 +40,4 @@
   display: flex;
   align-items: center;
   color: $button-color;
-}
-
-.container:last-of-type {
-  margin-right: 43px;
-
-  @media (max-width: 600px) {
-    margin-right: 0;
-  }
-}
-
-.heading {
-  font-size: $font-size;
-  line-height: 18px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #a0b0b9;
-  margin: 0;
-
-  @media (max-width: 600px) {
-    font-size: 10px;
-  }
-}
-
-.text {
-  font-size: 14px;
-  line-height: 21px;
-  display: flex;
-  align-items: center;
-  color: #4a4a4a;
-  margin: 0;
-
-  @media (max-width: 600px) {
-    font-size: 12px;
-  }
 }
