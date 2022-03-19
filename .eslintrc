@@ -38,6 +38,9 @@
         "exceptions": ["i", "j"],
         "min": 2
       }],
+      "no-console":"off",
+      "default-case": "off",
+      "consistent-return":"off",
       "no-use-before-define": ["off"],
       "default-param-last": ["off"],
       "no-else-return": ["off"],

@@ -1,24 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import style from './app.module.scss';
 import TariffFilter from '../tariff-filter/tariff-filter';
 import TicketsList from '../tickets-list/tickets-list';
 import TransferFilter from '../transfer-filter/transfer-filter';
+import Spiner from '../spiner/spiner';
+import ErrorMessage from '../error-message/error-message';
 
-function App() {
+function App({ isStoped, isError }) {
+  const spiner = !isStoped ? <Spiner /> : null;
+  if (isError) {
+    return <ErrorMessage />;
+  }
   return (
     <main className={style.app}>
       <div className={style.logo} />
+      {spiner}
       <TransferFilter />
       <section className={style.container}>
         <TariffFilter />
         <TicketsList />
-        <button type="button" className={style.button}>
-          Показать еще 5 билетов!
-        </button>
       </section>
     </main>
   );
 }
 
-export default App;
+App.propTypes = {
+  isStoped: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  isStoped: state.isStoped,
+  isError: state.isError,
+});
+
+export default connect(mapStateToProps)(App);

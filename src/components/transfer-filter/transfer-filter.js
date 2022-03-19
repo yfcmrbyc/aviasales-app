@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { chooseAll, chooseFilter } from '../../actions/actions';
+import { chooseFilter } from '../../actions/actions';
 import style from './transfer-filter.module.scss';
 
-function TransferFilter({ all, filters, clickOnAll, clickOnFilter }) {
+function TransferFilter({ all, filters, clickOnFilter }) {
   const { nonStop, one, two, three } = filters;
 
   const classForAll = all ? style['checkbox-checked'] : style.checkbox;
@@ -21,7 +21,7 @@ function TransferFilter({ all, filters, clickOnAll, clickOnFilter }) {
       <ul>
         <li className={style.item}>
           <label className={style.label}>
-            <input onClick={clickOnAll} className={style.input} type="checkbox" name="all" />
+            <input onClick={() => clickOnFilter('all')} className={style.input} type="checkbox" name="all" />
             <span className={classForAll} />
             Все
           </label>
@@ -59,26 +59,19 @@ function TransferFilter({ all, filters, clickOnAll, clickOnFilter }) {
 TransferFilter.propTypes = {
   all: PropTypes.bool.isRequired,
   filters: PropTypes.objectOf(PropTypes.bool).isRequired,
-  clickOnAll: PropTypes.func.isRequired,
+
   clickOnFilter: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  all: state.filters.all,
-  filters: state.filters.otherFilters,
+  all: state.filteredTickets.filters.all,
+  filters: state.filteredTickets.filters.otherFilters,
 });
 
 const mapDispatchToProps = (dispatch) => {
-  const { chooseAllDispatch, chooseFilterDispatch } = bindActionCreators(
-    {
-      chooseAllDispatch: chooseAll,
-      chooseFilterDispatch: chooseFilter,
-    },
-    dispatch
-  );
+  const { chooseFilterDispatch } = bindActionCreators({ chooseFilterDispatch: chooseFilter }, dispatch);
 
   return {
-    clickOnAll: chooseAllDispatch,
     clickOnFilter: chooseFilterDispatch,
   };
 };

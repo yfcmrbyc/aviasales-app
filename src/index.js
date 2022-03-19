@@ -6,7 +6,7 @@ import ReduxThunk from 'redux-thunk';
 
 import reducer from './reducers/reducer';
 import App from './components/app/app';
-import { getSearchID } from './actions/actions';
+import { getSearchID, getTickets } from './actions/actions';
 
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -19,9 +19,19 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(ReduxThunk))
 
 store.dispatch(getSearchID());
 
+const loadingTickets = () => {
+  const { searchID, isStoped } = store.getState();
+  if (!isStoped) {
+    store.dispatch(getTickets(searchID));
+    setTimeout(() => loadingTickets(), 2000);
+  }
+};
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
 );
+
+setTimeout(() => loadingTickets(), 1500);

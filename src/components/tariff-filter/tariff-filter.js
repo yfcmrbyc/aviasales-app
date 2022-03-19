@@ -36,7 +36,7 @@ TariffFilter.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentSorting: state.sorting.visibilitySorting,
+  currentSorting: state.sorting,
 });
 
 const mapDispatchToProps = (dispatch) => ({
