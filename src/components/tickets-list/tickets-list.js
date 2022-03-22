@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
+import { Spin } from 'antd';
 
 import AlertMessage from '../alert-message/alert-message';
 import Ticket from '../ticket/ticket';
 import style from './tickets-list.module.scss';
 import { loadMoreTickets } from '../../actions/actions';
 
-function TicketsList({ tickets, isAdded, end, moreTickets }) {
+function TicketsList({ tickets, isAdded, end, moreTickets, isLoaded }) {
   const renderTickets = (data, valueBegin, valueEnd) =>
     data.slice(valueBegin, valueEnd).map((ticket) => {
       const key = uuidv4();
@@ -21,15 +22,22 @@ function TicketsList({ tickets, isAdded, end, moreTickets }) {
     </button>
   );
 
+  const spin = (
+    <Spin tip="Загрузка...">
+      <AlertMessage />
+    </Spin>
+  );
+
   const ticketsList = tickets.length > 0 ? renderTickets(tickets, 0, 5) : null;
   const addedTickets = isAdded ? renderTickets(tickets, 5, end) : null;
-  const buttonOrAlert = tickets.length === 0 ? <AlertMessage /> : button;
+  const alertOrSpin = isLoaded ? <AlertMessage /> : spin;
 
   return (
     <ul>
+      {tickets.length === 0 && alertOrSpin}
       {ticketsList}
       {addedTickets}
-      {buttonOrAlert}
+      {tickets.length > 0 && button}
     </ul>
   );
 }
@@ -43,12 +51,14 @@ TicketsList.propTypes = {
   isAdded: PropTypes.bool.isRequired,
   end: PropTypes.number.isRequired,
   moreTickets: PropTypes.func.isRequired,
+  isLoaded: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   tickets: state.filteredTickets.tickets,
   isAdded: state.isAdded,
   end: state.end,
+  isLoaded: state.isLoaded,
 });
 
 const mapDispatchToProps = (dispatch) => ({

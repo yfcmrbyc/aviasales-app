@@ -3,6 +3,7 @@ import { changeSorting, changeFilter } from './helper-functions';
 
 const initialState = {
   sorting: VisibilitySorting.SHOW_ANY,
+  isLoaded: false,
   isError: false,
   errorMessage: '',
   searchID: '',

@@ -17,10 +17,10 @@ function App({ isStoped, isError }) {
   return (
     <main className={style.app}>
       <div className={style.logo} />
-      {spiner}
       <TransferFilter />
       <section className={style.container}>
         <TariffFilter />
+        {spiner}
         <TicketsList />
       </section>
     </main>

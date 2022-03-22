@@ -7,6 +7,7 @@ import ReduxThunk from 'redux-thunk';
 import reducer from './reducers/reducer';
 import App from './components/app/app';
 import { getSearchID, getTickets } from './actions/actions';
+import 'antd/dist/antd.css';
 
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

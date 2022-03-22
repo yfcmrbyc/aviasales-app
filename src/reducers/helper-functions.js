@@ -396,12 +396,12 @@ export const changeSorting = (sort, arr) => {
   }
 
   if (sort === VisibilitySorting.SHOW_OPTIMAL) {
-    const ceapest = arrForSort.sort((itemA, itemB) => itemA.price - itemB.price);
-    return ceapest.sort(
+    return arrForSort.sort(
       (itemA, itemB) =>
         itemA.segments[0].duration +
-        itemA.segments[1].duration -
-        (itemB.segments[0].duration + itemB.segments[1].duration)
+        itemA.segments[1].duration +
+        itemA.price -
+        (itemB.segments[0].duration + itemB.segments[1].duration + itemB.price)
     );
   }
 
