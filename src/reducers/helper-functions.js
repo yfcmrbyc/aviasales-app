@@ -59,7 +59,7 @@ export const changeFilter = (currentFilter, filters, tickets, filteredTickets) =
             otherFilters: {
               ...otherFilters,
               [currentFilter]: {
-                value,
+                value: otherFilters[currentFilter].value,
                 checked: false 
               }
            }
@@ -75,7 +75,7 @@ export const changeFilter = (currentFilter, filters, tickets, filteredTickets) =
             otherFilters: {
               ...otherFilters,
               [currentFilter]: {
-                  value,
+                  value: otherFilters[currentFilter].value,
                   checked: !otherFilters[currentFilter].checked 
                 }
             }
