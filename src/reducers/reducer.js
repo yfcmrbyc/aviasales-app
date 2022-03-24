@@ -56,7 +56,7 @@ export default function reducer(state = initialState, action) {
         sorting: VisibilitySorting.SHOW_ANY,
         isAdded: false,
         end: 5,
-        filteredTickets: changeFilter(action.filter, state.filteredTickets.filters, [...state.tickets]),
+        filteredTickets: changeFilter(action.filter, state.filteredTickets.filters, [...state.tickets], [...state.filteredTickets.tickets]),
       };
     case 'SET_SORTING':
       return {
