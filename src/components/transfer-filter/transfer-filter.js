@@ -10,10 +10,10 @@ function TransferFilter({ all, filters, clickOnFilter }) {
   const { nonStop, one, two, three } = filters;
 
   const classForAll = all ? style['checkbox-checked'] : style.checkbox;
-  const classForNonStop = nonStop ? style['checkbox-checked'] : style.checkbox;
-  const classForOne = one ? style['checkbox-checked'] : style.checkbox;
-  const classForTwo = two ? style['checkbox-checked'] : style.checkbox;
-  const classForThree = three ? style['checkbox-checked'] : style.checkbox;
+  const classForNonStop = nonStop.checked ? style['checkbox-checked'] : style.checkbox;
+  const classForOne = one.checked ? style['checkbox-checked'] : style.checkbox;
+  const classForTwo = two.checked ? style['checkbox-checked'] : style.checkbox;
+  const classForThree = three.checked ? style['checkbox-checked'] : style.checkbox;
 
   return (
     <aside className={style['transfer-filter']}>
@@ -58,7 +58,7 @@ function TransferFilter({ all, filters, clickOnFilter }) {
 
 TransferFilter.propTypes = {
   all: PropTypes.bool.isRequired,
-  filters: PropTypes.objectOf(PropTypes.bool).isRequired,
+  filters: PropTypes.objectOf(PropTypes.objectOf(PropTypes.any)).isRequired,
 
   clickOnFilter: PropTypes.func.isRequired,
 };

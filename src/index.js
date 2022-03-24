@@ -22,6 +22,7 @@ store.dispatch(getSearchID());
 
 const loadingTickets = () => {
   const { searchID, isStoped } = store.getState();
+
   if (!isStoped) {
     store.dispatch(getTickets(searchID));
     setTimeout(() => loadingTickets(), 2000);
@@ -35,4 +36,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-setTimeout(() => loadingTickets(), 1500);
+setTimeout(() => loadingTickets(), 500);

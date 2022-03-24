@@ -26,12 +26,16 @@
   margin-bottom: 10px;
 }
 
-.header,
-.info-forward,
-.info-back {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.info-forward,
+.info-back {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .price {

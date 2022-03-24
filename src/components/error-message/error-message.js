@@ -1,12 +1,9 @@
 import React from 'react';
-
-import style from './error-message.module.scss';
+import { Alert } from 'antd';
 
 function ErrorMessage() {
   return (
-    <div className={style.error}>
-      <h3 className={style.title}>Упс.. Что-то пошло не так.</h3>
-    </div>
+    <Alert message="Упс.. Что-то пошло не так." description="Мы уже стараемся это починить." type="error" showIcon />
   );
 }
 
